@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Holler @pp Me</title>
+    <!-- Include Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik:400,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h1>Holler @PP!</h1>
+      <div class="content">
+        <ul v-if="hollers.length > 0">
+          <li v-for="holler in hollers">
+            {{ holler }}
+          </li>
+        </ul>
+      </div>
+      <h2>👇🏾Send a Holler👇🏾</h2>
+      <form
+        method="post"
+        action="/add-holler"
+        class="main-form"
+      >
+        <div class="form-row">
+          <label for="to">
+            Number to Holler @
+            <input
+              type="tel"
+              placeholder="+14166471234"
+              name="to"
+              v-model="to"
+            />
+          </label>
+          <label for="sender">
+            Your Name
+            <input
+              type="text"
+              placeholder="Holler-er"
+              name="sender"
+              v-model="sender"
+            />
+          </label>
+        </div>
+        <div class="form-row">
+          <label for="receiver">
+            Person to Holler @
+            <input
+              type="text"
+              placeholder="Holler-ee"
+              name="receiver"
+              v-model="receiver"
+            />
+          </label>
+          <span class="float-text">is</span>
+          <label for="holler">
+            Your Holler
+            <input
+              type="text"
+              placeholder="Write msg here👈🏽"
+              name="holler"
+              v-model="holler"
+            />
+          </label>
+        </div>
+      </form>
+      <button
+        form="holler-form"
+        class="holler-button"
+        @click.prevent="sendholler"
+      >
+      🚀Holler🚀
+      </button>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          hollers: [],
+          to: null,
+          sender: null,
+          receiver: null,
+          holler: null
+        },
+        methods: {
+          async refreshhollers() {
+            const response = await fetch("/api/hollers");
+            this.hollers = await response.json();
+          },
+          async sendholler() {
+            // Gather data from the form
+            const data = {
+              to: this.to,
+              sender: this.sender,
+              receiver: this.receiver,
+              holler: this.holler
+            };
+
+            const response = await fetch("/api/hollers", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            console.log(result);
+            // Clear the form
+            this.to = null;
+            this.sender = null;
+            this.receiver = null;
+            this.holler = null;
+            this.refreshhollers();
+            return result;
+          }
+        },
+        created() {
+          this.refreshhollers();
+        }
+      });
+    </script>
+  </body>
+</html>
