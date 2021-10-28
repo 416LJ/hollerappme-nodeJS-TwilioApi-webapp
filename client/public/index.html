@@ -1,116 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
-  <title>Holler @pp Me</title>
-  <!-- Include Dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/main.css" />
-</head>
-
-<body>
-  <div id="app" class="container">
-    <h1>Holler @PP! ME</h1>
-    <div><center><h6> all messages are public and  deleted periodically</h6></center></div>
-    <div class="content">
-      <ul v-if="hollers.length > 0">
-        <li v-for="holler in hollers">
-          {{ holler }}
-        </li>
-      </ul>
-    </div>
-    <h2>👇🏾Send a Holler👇🏾</h2>
-    <form method="post" action="/add-holler" class="main-form">
-      <div class="form-row">
-        <label for="to">
-          NUMBER TO HOLLER @
-          <input type="tel" placeholder="👉🏾+14166471234 **NOTE** ENTER NUMBER IN THE GIVEN FORMAT" name="to"
-            v-model="to" />
-        </label>
-        <label for="sender">
-          YOUR NAME
-          <input type="text" placeholder="👉🏾WHO AM I" name="sender" v-model="sender" />
-        </label>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Holler @pp Me</title>
+    <!-- Include Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/main.css" />
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h1>Holler @PP! ME</h1>
+      <div class="content">
+        <ul v-if="hollers.length > 0">
+          <li v-for="holler in hollers">
+            {{ holler }}
+          </li>
+        </ul>
       </div>
-      <div class="form-row">
-        <label for="receiver">
-          PERSON TO HOLLER @
-          <input type="text" placeholder="👉🏾WHO YOU HOLLERIN' AT!" name="receiver" v-model="receiver" />
-        </label>
-        <span class="float-text"></span>
-        <label for="holler">
-          YOUR HOLLER
-          <input type="text" placeholder="👉🏾WRITE YOUR MESSAGE HERE!" name="holler" v-model="holler" />
-        </label>
-      </div>
-    </form>
-    <button form="holler-form" class="holler-button" @click.prevent="sendholler">
+      <h2>👇🏾Send a Holler👇🏾</h2>
+      <form
+        method="post"
+        action="/add-holler"
+        class="main-form"
+      >
+        <div class="form-row">
+          <label for="to">
+            NUMBER TO HOLLER @
+            <input
+              type="tel"
+              placeholder="👉🏾+14166471234 **NOTE** ENTER NUMBER IN THE GIVEN FORMAT"
+              name="to"
+              v-model="to"
+            />
+          </label>
+          <label for="sender">
+            YOUR NAME
+            <input
+              type="text"
+              placeholder="👉🏾WHO AM I"
+              name="sender"
+              v-model="sender"
+            />
+          </label>
+        </div>
+        <div class="form-row">
+          <label for="receiver">
+            PERSON TO HOLLER @
+            <input
+              type="text"
+              placeholder="👉🏾WHO YOU HOLLERIN' AT!"
+              name="receiver"
+              v-model="receiver"
+            />
+          </label>
+          <span class="float-text"></span>
+          <label for="holler">
+            YOUR HOLLER
+            <input
+              type="text"
+              placeholder="👉🏾WRITE YOUR MESSAGE HERE!"
+              name="holler"
+              v-model="holler"
+            />
+          </label>
+        </div>
+      </form>
+      <button
+        form="holler-form"
+        class="holler-button"
+        @click.prevent="sendholler"
+      >
       <h6>🚀Holler🚀</h6>
-    </button>
-
-    <div>
-      <h6>© 2021 HOLLER @PP</h6>
+      </button>
+      
+      <div><h6>© 2021 HOLLER @PP</h6></div>
+      <div>
+        <a href="https://416lj.github.io/" target="_blank">416lj.github.io/</a>
+        
+      </div>
+   
     </div>
-    <div>
-      <a href="https://416lj.github.io/" target="_blank">416lj.github.io/</a>
-
-    </div>
-
-  </div>
-  <script>
-    const app = new Vue({
-      el: "#app",
-      data: {
-        hollers: [],
-        to: null,
-        sender: null,
-        receiver: null,
-        holler: null
-      },
-      methods: {
-        async refreshhollers() {
-          const response = await fetch("http://localhost:3000/api/hollers");
-          this.hollers = await response.json();
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          hollers: [],
+          to: null,
+          sender: null,
+          receiver: null,
+          holler: null
         },
-        async sendholler() {
-          // Gather data from the form
-          const data = {
-            to: this.to,
-            sender: this.sender,
-            receiver: this.receiver,
-            holler: this.holler
-          };
+        methods: {
+          async refreshhollers() {
+            const response = await fetch("http://localhost:3000/api/hollers");
+            this.hollers = await response.json();
+          },
+          async sendholler() {
+            // Gather data from the form
+            const data = {
+              to: this.to,
+              sender: this.sender,
+              receiver: this.receiver,
+              holler: this.holler
+            };
 
-          const response = await fetch("http://localhost:3000/api/hollers", {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
-          const result = await response.json();
-          console.log(result);
-          // Clear the form
-          this.to = null;
-          this.sender = null;
-          this.receiver = null;
-          this.holler = null;
+            const response = await fetch("http://localhost:3000/api/hollers", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            console.log(result);
+            // Clear the form
+            this.to = null;
+            this.sender = null;
+            this.receiver = null;
+            this.holler = null;
+            this.refreshhollers();
+            return result;
+          }
+        },
+        created() {
           this.refreshhollers();
-          return result;
         }
-      },
-      created() {
-        this.refreshhollers();
-      }
-    });
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
