@@ -9,7 +9,7 @@ const client = new twilioClient(process.env.TWILIO_ACCOUNT_SID, process.env.TWIL
 const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 app.use(cors());
 // This is a single page application and it's all rendered in public/index.html
-app.use(express.static("public"));
+app.use(express.static("https://hollerappclient.vercel.app/"));
 // Parse the body of requests automatically
 app.use(bodyParser.json());
 

@@ -97,7 +97,7 @@
         },
         methods: {
           async refreshhollers() {
-            const response = await fetch("http://localhost:3000/api/hollers");
+            const response = await fetch("https://obscure-harbor-00722.herokuapp.com/api/hollers");
             this.hollers = await response.json();
           },
           async sendholler() {
@@ -109,7 +109,7 @@
               holler: this.holler
             };
 
-            const response = await fetch("http://localhost:3000/api/hollers", {
+            const response = await fetch("https://obscure-harbor-00722.herokuapp.com/api/hollers", {
               method: "POST",
               headers: {
                 Accept: "application/json",
