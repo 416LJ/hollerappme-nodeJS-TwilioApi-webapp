@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css?family=Rubik:400,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/main.css" />
   </head>
   <body>
     <div id="app" class="container">
@@ -91,7 +91,7 @@
         },
         methods: {
           async refreshhollers() {
-            const response = await fetch("/api/hollers");
+            const response = await fetch("http://localhost:3000/api/hollers");
             this.hollers = await response.json();
           },
           async sendholler() {
@@ -103,7 +103,7 @@
               holler: this.holler
             };
 
-            const response = await fetch("/api/hollers", {
+            const response = await fetch("http://localhost:3000/api/hollers", {
               method: "POST",
               headers: {
                 Accept: "application/json",
