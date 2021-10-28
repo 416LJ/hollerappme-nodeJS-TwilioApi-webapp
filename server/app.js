@@ -29,4 +29,4 @@ app.post("/api/hollers", async (req, res) => {
   res.json({ success: false });
 });
 
-app.listen(port, () => console.log(`Prototype is listening on port ${port}!`));
+app.listen(port, () => console.log(`Holler @PP Server is listening on port ${port}!`));
