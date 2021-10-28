@@ -4,6 +4,8 @@
   "description": "client side of the holler-@app api web app",
   "main": "index.html",
   "scripts": {
+    
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Laxsan Jeyasingam <Laxsan.jeya@gmail.com> (https://github.com/416LJ)",

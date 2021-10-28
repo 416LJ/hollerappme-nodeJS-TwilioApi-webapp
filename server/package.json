@@ -4,8 +4,8 @@
   "description": "server side for Holler-@pp api web app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
+    
   },
   "author": "Laxsan Jeyasingam <Laxsan.jeya@gmail.com> (https://github.com/416LJ)",
   "license": "MIT",
