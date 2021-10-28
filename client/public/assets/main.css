@@ -47,7 +47,7 @@ table {
 this contains the main css body
 */
 body {
- font-family: 'Rubik', sans-serif;
+  font-family: 'Gluten', cursive;
  background-color: #f3926c;
  color: rgba(0, 0, 0, .88);
  line-height: 1.5;
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Gluten', cursive;
   font-weight: 900;
   font-size: 2em;
   color: #f3926c;
@@ -147,6 +147,7 @@ h2 {
   border-style: none;
   background-color: #199e55;
   color: #fff;
+  font-family: 'Gluten', cursive;
 }
 
 .holler-button:hover {

@@ -7,15 +7,13 @@
     <title>Holler @pp Me</title>
     <!-- Include Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Rubik:400,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap" rel="stylesheet"/>
+    
     <link rel="stylesheet" href="./assets/main.css" />
   </head>
   <body>
     <div id="app" class="container">
-      <h1>Holler @PP!</h1>
+      <h1>Holler @PP! ME</h1>
       <div class="content">
         <ul v-if="hollers.length > 0">
           <li v-for="holler in hollers">
@@ -34,7 +32,7 @@
             Number to Holler @
             <input
               type="tel"
-              placeholder="+14166471234"
+              placeholder="+14166471234 NOTE: PLEASE ENTER NUMBER EXACTLY IN THIS FORMAT."
               name="to"
               v-model="to"
             />
