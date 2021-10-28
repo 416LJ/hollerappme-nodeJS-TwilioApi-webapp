@@ -7,8 +7,9 @@
     <title>Holler @pp Me</title>
     <!-- Include Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@700&display=swap" rel="stylesheet"/>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/main.css" />
   </head>
   <body>
@@ -29,19 +30,19 @@
       >
         <div class="form-row">
           <label for="to">
-            Number to Holler @
+            NUMBER TO HOLLER @
             <input
               type="tel"
-              placeholder="+14166471234 NOTE: PLEASE ENTER NUMBER EXACTLY IN THIS FORMAT."
+              placeholder="+14166471234 **NOTE** ENTER NUMBER IN THE GIVEN FORMAT"
               name="to"
               v-model="to"
             />
           </label>
           <label for="sender">
-            Your Name
+            YOUR NAME
             <input
               type="text"
-              placeholder="Holler-er"
+              placeholder="WHO AM I"
               name="sender"
               v-model="sender"
             />
@@ -49,20 +50,20 @@
         </div>
         <div class="form-row">
           <label for="receiver">
-            Person to Holler @
+            PERSON TO HOLLER @
             <input
               type="text"
-              placeholder="Holler-ee"
+              placeholder="WHO YOU HOLLERIN' AT!"
               name="receiver"
               v-model="receiver"
             />
           </label>
           <span class="float-text"></span>
           <label for="holler">
-            Your Holler
+            YOUR HOLLER
             <input
               type="text"
-              placeholder="Write msg here👈🏽"
+              placeholder="WRITE YOUR MESSAGE HERE!👈🏽"
               name="holler"
               v-model="holler"
             />
@@ -74,11 +75,15 @@
         class="holler-button"
         @click.prevent="sendholler"
       >
-      🚀Holler🚀
+      <h6>🚀Holler🚀</h6>
       </button>
+      
+      <div><h6>© 2021 HOLLER @PP</h6></div>
       <div>
-        <h6>©2021 Laxsan Jeyasingam</h6>
+        <a href="https://416lj.github.io/" target="_blank">416lj.github.io/</a>
+        
       </div>
+      <div><br></div>
     </div>
     <script>
       const app = new Vue({
