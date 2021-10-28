@@ -25,8 +25,15 @@ app.post("/api/hollers", async (req, res) => {
   const to = req.body.to;
   const from = process.env.TWILIO_PHONE_NUMBER;
   const body = `${req.body.sender} says: ${req.body.receiver} , ${req.body.holler}.`;
-  await client.messages.create({to, from, body});
-  res.json({ success: false });
+
+  try {
+    await client.messages.create({to, from, body});
+  }catch(err) {
+    res.status(err.status).json({success: false, message: err.message});
+  }
+  
+  res.json({ success: true });
 });
 
 app.listen(port, () => console.log(`Holler @PP Server is listening on port ${port}!`));
+
