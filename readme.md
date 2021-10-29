@@ -8,4 +8,4 @@
 #### Features :
 * Users can send text messages to a phone number
 
-![Screenshot](shot.png)
+![Screenshot](Shot.png)
