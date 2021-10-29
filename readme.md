@@ -8,13 +8,4 @@
 #### Features :
 * Users can send text messages to a phone number
 
-<<<<<<< HEAD
 ![Screenshot](shot.png)
-=======
-![Screenshot](Shot.png)
-
-
-
-
-
->>>>>>> 8557cfc89fe901bc82059ed376457a7f8eb90dde
